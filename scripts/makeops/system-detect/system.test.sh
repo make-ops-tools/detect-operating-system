@@ -3,6 +3,7 @@
 # Linux host operating system
 uname -s | grep -q "Linux" && /bin/sh -c ' \
   eval "$(./scripts/makeops/system-detect/system.sh)"; \
+  env | grep ^SYSTEM_; \
   [ $SYSTEM_NAME = linux ] && \
   [ $SYSTEM_CONTAINER = false ] \
 '
@@ -10,6 +11,7 @@ uname -s | grep -q "Linux" && /bin/sh -c ' \
 # macOS host operating system
 uname -s | grep -q "Darwin" && /bin/sh -c ' \
   eval "$(./scripts/makeops/system-detect/system.sh)"; \
+  env | grep ^SYSTEM_; \
   [ $SYSTEM_NAME = unix ] && \
   [ $SYSTEM_DIST = macos ] && \
   [ $SYSTEM_CONTAINER = false ] \
