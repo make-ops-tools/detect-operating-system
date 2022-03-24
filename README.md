@@ -1,6 +1,16 @@
 # MakeOps Scripts - System Detect Utility
 
-A small utility to detect `*nix` operating system info. It works in `shell` and aims to detect distributions like
+## Table of Contents
+
+- [MakeOps Scripts - System Detect Utility](#makeops-scripts---system-detect-utility)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Quick Start](#quick-start)
+  - [Usage](#usage)
+
+## Overview
+
+A small utility to detect `*nix` operating system info. It works in `shell` and aims to correctly recognise distributions like
 
 - Alpine
 - Debian
@@ -8,12 +18,28 @@ A small utility to detect `*nix` operating system info. It works in `shell` and 
 
 and more.
 
+## Quick Start
+
+This utility can be installed locally in the user's home directory
+
+```bash
+$ curl -L bit.ly/makeops-system-detect | bash
+```
+
+A quick test can be done using the `make` targets provided
+
+```bash
+$ cd ~/.makeops-system-detect
+$ make detect
+$ make test
+```
+
 ## Usage
 
 Example 1: Print exports only
 
 ```bash
-$ ./system.sh
+$ ./scripts/makeops/system-detect/system.sh
 export SYSTEM_NAME=unix
 export SYSTEM_DIST=macos
 export SYSTEM_DIST_BASED_ON=bsd
@@ -28,7 +54,7 @@ export SYSTEM_CONTAINER=false
 Example 2: Export as system variables
 
 ```bash
-$ eval "$(./system.sh)"
+$ eval "$(./scripts/makeops/system-detect/system.sh)"
 $ env | grep ^SYSTEM_
 SYSTEM_NAME=unix
 SYSTEM_DIST=macos
