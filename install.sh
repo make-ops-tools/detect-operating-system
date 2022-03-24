@@ -61,7 +61,7 @@ function download() {
 
 function finish() {
   tput setaf 4
-  printf "\nProject installed in $INSTALL_DIR\n"
+  printf "\nProject installed in %s \n" "$INSTALL_DIR"
   tput setaf 2
   printf "\nAll done!\n\n"
   tput sgr0
