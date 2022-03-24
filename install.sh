@@ -47,8 +47,7 @@ function download() {
   tar -zxf /tmp/$PROJECT_NAME.tar.gz -C /tmp
   rm -rf \
     /tmp/$PROJECT_NAME.tar.gz \
-    /tmp/$PROJECT_NAME* \
-    "$INSTALL_DIR"
+    /tmp/$PROJECT_NAME*
   if [[ "$SCRIPTS_ONLY" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]]; then
     rm /tmp/$ORG_NAME-$REPO_NAME-*/scripts/makeops/$REPO_NAME/init.mk
     mkdir -p "$INSTALL_DIR"
