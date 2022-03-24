@@ -1,5 +1,7 @@
 # MakeOps Scripts - System Detect Utility
 
+[![makeops-scripts](https://circleci.com/gh/makeops-scripts/system-detect.svg?style=svg)](https://app.circleci.com/pipelines/github/makeops-scripts/system-detect)
+
 ## Table of Contents
 
 - [MakeOps Scripts - System Detect Utility](#makeops-scripts---system-detect-utility)
