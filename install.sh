@@ -51,7 +51,7 @@ function download() {
   if [[ "$SCRIPTS_ONLY" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]]; then
     rm /tmp/$ORG_NAME-$REPO_NAME-*/scripts/makeops/$REPO_NAME/init.mk
     mkdir -p "$INSTALL_DIR"
-    mv /tmp/$ORG_NAME-$REPO_NAME-*/scripts/* "$INSTALL_DIR"
+    cp -Rf /tmp/$ORG_NAME-$REPO_NAME-*/scripts/* "$INSTALL_DIR"
     rm -rf /tmp/$ORG_NAME-$REPO_NAME-*
   else
     mv /tmp/$ORG_NAME-$REPO_NAME-* "$INSTALL_DIR"
