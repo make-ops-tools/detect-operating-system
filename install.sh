@@ -27,11 +27,11 @@ function main() {
 }
 
 function clone() {
-  if [[ "$SCRIPTS_ONLY" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$$ ]]; then
+  if [[ "$SCRIPTS_ONLY" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]]; then
     return 1
   fi
   if ! [ -d "$INSTALL_DIR/.git" ]; then
-    mkdir -f "$INSTALL_DIR"
+    mkdir -p "$INSTALL_DIR"
     cd "$INSTALL_DIR"
     git clone https://github.com/$ORG_NAME/$REPO_NAME.git .
   fi
@@ -49,12 +49,13 @@ function download() {
     /tmp/$PROJECT_NAME.tar.gz \
     /tmp/$PROJECT_NAME* \
     "$INSTALL_DIR"
-  if [[ "$SCRIPTS_ONLY" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$$ ]]; then
-    rm /tmp/$ORG_NAME-$PROJECT_NAME-*/scripts/makeops/$REPO_NAME/init.mk
-    mv /tmp/$ORG_NAME-$PROJECT_NAME-*/scripts/* "$INSTALL_DIR"
-    rm -rf /tmp/$ORG_NAME-$PROJECT_NAME-*
+  if [[ "$SCRIPTS_ONLY" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]]; then
+    rm /tmp/$ORG_NAME-$REPO_NAME-*/scripts/makeops/$REPO_NAME/init.mk
+    mkdir -p "$INSTALL_DIR"
+    mv /tmp/$ORG_NAME-$REPO_NAME-*/scripts/* "$INSTALL_DIR"
+    rm -rf /tmp/$ORG_NAME-$REPO_NAME-*
   else
-    mv /tmp/$ORG_NAME-$PROJECT_NAME-* "$INSTALL_DIR"
+    mv /tmp/$ORG_NAME-$REPO_NAME-* "$INSTALL_DIR"
   fi
 }
 
