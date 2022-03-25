@@ -25,18 +25,18 @@ if uname -s | grep -iq "darwin"; then
   SYSTEM_NAME="unix"
   SYSTEM_DIST="macos"
   SYSTEM_DIST_BASED_ON="bsd"
-  [ "$(sw_vers -productVersion | grep -c 10.10)" -gt 0 ] && SYSTEM_PSEUDO_NAME="Yosemite"
-  [ "$(sw_vers -productVersion | grep -c 10.11)" -gt 0 ] && SYSTEM_PSEUDO_NAME="El Capitan"
-  [ "$(sw_vers -productVersion | grep -c 10.12)" -gt 0 ] && SYSTEM_PSEUDO_NAME="Sierra"
-  [ "$(sw_vers -productVersion | grep -c 10.13)" -gt 0 ] && SYSTEM_PSEUDO_NAME="High Sierra"
-  [ "$(sw_vers -productVersion | grep -c 10.14)" -gt 0 ] && SYSTEM_PSEUDO_NAME="Mojave"
-  [ "$(sw_vers -productVersion | grep -c 10.15)" -gt 0 ] && SYSTEM_PSEUDO_NAME="Catalina"
-  [ "$(sw_vers -productVersion | grep -c 11.)" -gt 0 ] && SYSTEM_PSEUDO_NAME="Big Sur"
-  [ "$(sw_vers -productVersion | grep -c 12.)" -gt 0 ] && SYSTEM_PSEUDO_NAME="Monterey"
+  sw_vers -productVersion | grep -q 10.10 && SYSTEM_PSEUDO_NAME="Yosemite"
+  sw_vers -productVersion | grep -q 10.11 && SYSTEM_PSEUDO_NAME="El Capitan"
+  sw_vers -productVersion | grep -q 10.12 && SYSTEM_PSEUDO_NAME="Sierra"
+  sw_vers -productVersion | grep -q 10.13 && SYSTEM_PSEUDO_NAME="High Sierra"
+  sw_vers -productVersion | grep -q 10.14 && SYSTEM_PSEUDO_NAME="Mojave"
+  sw_vers -productVersion | grep -q 10.15 && SYSTEM_PSEUDO_NAME="Catalina"
+  sw_vers -productVersion | grep -q 11. && SYSTEM_PSEUDO_NAME="Big Sur"
+  sw_vers -productVersion | grep -q 12. && SYSTEM_PSEUDO_NAME="Monterey"
   SYSTEM_VERSION=$(sw_vers -productVersion)
   SYSTEM_ARCH_NAME="i386"
-  [ "$(uname -m | grep -c x86_64)" -gt 0 ] && SYSTEM_ARCH_NAME="amd64"
-  [ "$(uname -m | grep -c arm)" -gt 0 ] && SYSTEM_ARCH_NAME="arm64"
+  uname -m | grep -q "x86_64" && SYSTEM_ARCH_NAME="amd64"
+  uname -m | grep -q "arm" && SYSTEM_ARCH_NAME="arm64"
 
 # Detect if Debian family
 elif [ -f /etc/debian_version ]; then
@@ -55,7 +55,7 @@ elif [ -f /etc/debian_version ]; then
   fi
   SYSTEM_DIST_BASED_ON="debian"
   SYSTEM_ARCH_NAME="i386"
-  uname -m | grep -q 64 && SYSTEM_ARCH_NAME="amd64"
+  uname -m | grep -q "64" && SYSTEM_ARCH_NAME="amd64"
   { uname -m | grep -q "arm[_]*64" || uname -m | grep -q "aarch64"; } && SYSTEM_ARCH_NAME="arm64"
 
 # Detect if RedHat family
@@ -68,7 +68,7 @@ elif [ -f /etc/redhat-release ]; then
   SYSTEM_PSEUDO_NAME=$(sed s/.*\(// /etc/redhat-release | sed s/\)//)
   SYSTEM_VERSION=$(sed s/.*release\ // /etc/redhat-release | sed s/\ .*//)
   SYSTEM_ARCH_NAME="i386"
-  uname -m | grep -q 64 && SYSTEM_ARCH_NAME="amd64"
+  uname -m | grep -q "64" && SYSTEM_ARCH_NAME="amd64"
   { uname -m | grep -q "arm[_]*64" || uname -m | grep -q "aarch64"; } && SYSTEM_ARCH_NAME="arm64"
 
 # Detect if Alpine
@@ -79,7 +79,7 @@ elif which apk > /dev/null 2>&1; then
   SYSTEM_PSEUDO_NAME=
   SYSTEM_VERSION=$(grep -oE '[0-9]+\.[0-9]+\.[0-9]+' /etc/alpine-release)
   SYSTEM_ARCH_NAME="i386"
-  uname -m | grep -q 64 && SYSTEM_ARCH_NAME="amd64"
+  uname -m | grep -q "64" && SYSTEM_ARCH_NAME="amd64"
   { uname -m | grep -q "arm[_]*64" || uname -m | grep -q "aarch64"; } && SYSTEM_ARCH_NAME="arm64"
 
 # Detect if Busybox
@@ -90,7 +90,7 @@ elif which busybox > /dev/null 2>&1; then
   SYSTEM_PSEUDO_NAME=
   SYSTEM_VERSION=$(busybox | head -1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
   SYSTEM_ARCH_NAME="i386"
-  uname -m | grep -q 64 && SYSTEM_ARCH_NAME="amd64"
+  uname -m | grep -q "64" && SYSTEM_ARCH_NAME="amd64"
   { uname -m | grep -q "arm[_]*64" || uname -m | grep -q "aarch64"; } && SYSTEM_ARCH_NAME="arm64"
 
 fi
