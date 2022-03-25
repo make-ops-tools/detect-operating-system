@@ -3,7 +3,7 @@
 # Detect *nix operating system info.
 #
 # Usage:
-#   $ eval "$(./system.sh)"
+#   $ eval "$(./system-detect.sh)"
 #   $ env | grep ^SYSTEM_
 
 # ==============================================================================

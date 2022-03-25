@@ -32,7 +32,7 @@ A quick test can be done using the `make` targets provided
 
 ```bash
 $ cd ~/.makeops-system-detect
-$ make detect
+$ make system-detect
 $ make test
 ```
 
@@ -41,7 +41,7 @@ $ make test
 Example 1: Print exports only
 
 ```bash
-$ ./scripts/makeops/system-detect/system.sh
+$ ./scripts/makeops/system-detect/system-detect.sh
 export SYSTEM_NAME=unix
 export SYSTEM_DIST=macos
 export SYSTEM_DIST_BASED_ON=bsd
@@ -56,7 +56,7 @@ export SYSTEM_CONTAINER=false
 Example 2: Export as system variables
 
 ```bash
-$ eval "$(./scripts/makeops/system-detect/system.sh)"
+$ eval "$(./scripts/makeops/system-detect/system-detect.sh)"
 $ env | grep ^SYSTEM_
 SYSTEM_NAME=unix
 SYSTEM_DIST=macos

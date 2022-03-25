@@ -3,14 +3,14 @@ include $(abspath $(PROJECT_DIR)/scripts/makeops/system-detect/init.mk)
 
 # ==============================================================================
 
-detect: ### Detect operating system info
-	./scripts/makeops/system-detect/system.sh
+system-detect: ### Detect operating system info
+	./scripts/makeops/system-detect/system-detect.sh
 
 test: ### Run the test suite
-	./scripts/makeops/system-detect/system.test.sh
+	./scripts/makeops/system-detect/system-detect.test.sh
 
 # ==============================================================================
 
 .SILENT: \
-	detect \
+	system-detect \
 	test
