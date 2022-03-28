@@ -31,7 +31,7 @@ $ curl -L bit.ly/makeops-system-detect | bash
 A quick test can be done using the `make` targets provided
 
 ```bash
-$ cd ~/.makeops-system-detect
+$ cd ~/.makeops/system-detect
 $ make system-detect
 $ make test
 ```

@@ -19,6 +19,8 @@ SYSTEM_ARCH_NAME= # Can be "i386" or "amd64" or "arm64"
 SYSTEM_KERNEL=$(uname -r)
 SYSTEM_CONTAINER="false"
 
+# ==============================================================================
+
 # Detect if macOS
 if uname -s | grep -iq "darwin"; then
 
@@ -99,6 +101,8 @@ fi
 if grep -qi docker /proc/1/cgroup 2> /dev/null || head -n 1 /proc/1/sched 2> /dev/null | grep -q sh; then
   SYSTEM_CONTAINER="true"
 fi
+
+# ==============================================================================
 
 # Print variables exports
 echo "export SYSTEM_NAME=$(echo "$SYSTEM_NAME" | tr "[:upper:]" "[:lower:]" | tr " " "_")"

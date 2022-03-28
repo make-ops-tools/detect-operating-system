@@ -18,6 +18,7 @@
     "editor.guides.bracketPairs": "active",
     "editor.renderWhitespace": "all",
     "editor.rulers": [
+      80,
       120
     ],
     "editor.suggestSelection": "recentlyUsedByPrefix",
