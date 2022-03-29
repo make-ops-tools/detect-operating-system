@@ -104,7 +104,7 @@ output=$(
   docker run --interactive --tty --rm \
     --volume "$PWD":/project:ro \
     --workdir /project \
-    --entrypoint /project/scripts/makeops/system-detect/system-detect-entrypoint.sh \
+    --entrypoint /project/scripts/makeops/system-detect/system-detect-docker-entrypoint.test.sh \
     amazon/aws-lambda-python:3.6.2022.03.23.17 \
       /bin/sh -c \
         ./scripts/makeops/system-detect/system-detect.sh
@@ -118,7 +118,7 @@ output=$(
   docker run --interactive --tty --rm \
     --volume "$PWD":/project:ro \
     --workdir /project \
-    --entrypoint /project/scripts/makeops/system-detect/system-detect-entrypoint.sh \
+    --entrypoint /project/scripts/makeops/system-detect/system-detect-docker-entrypoint.test.sh \
     amazon/aws-lambda-java:11.2022.03.23.17 \
       /bin/sh -c \
         ./scripts/makeops/system-detect/system-detect.sh
@@ -132,7 +132,7 @@ output=$(
   docker run --interactive --tty --rm \
     --volume "$PWD":/project:ro \
     --workdir /project \
-    --entrypoint /project/scripts/makeops/system-detect/system-detect-entrypoint.sh \
+    --entrypoint /project/scripts/makeops/system-detect/system-detect-docker-entrypoint.test.sh \
     amazon/aws-lambda-nodejs:14.2022.03.23.16 \
       /bin/sh -c \
         ./scripts/makeops/system-detect/system-detect.sh
@@ -146,7 +146,7 @@ output=$(
   docker run --interactive --tty --rm \
     --volume "$PWD":/project:ro \
     --workdir /project \
-    --entrypoint /project/scripts/makeops/system-detect/system-detect-entrypoint.sh \
+    --entrypoint /project/scripts/makeops/system-detect/system-detect-docker-entrypoint.test.sh \
     amazon/aws-lambda-dotnet:6.2022.03.23.17 \
       /bin/sh -c \
         ./scripts/makeops/system-detect/system-detect.sh
@@ -162,7 +162,7 @@ output=$(
   docker run --interactive --tty --rm \
     --volume "$PWD":/project:ro \
     --workdir /project \
-    --entrypoint /project/scripts/makeops/system-detect/system-detect-entrypoint.sh \
+    --entrypoint /project/scripts/makeops/system-detect/system-detect-docker-entrypoint.test.sh \
     mcr.microsoft.com/azure-functions/python:4-python3.9 \
       /bin/sh -c \
         ./scripts/makeops/system-detect/system-detect.sh
@@ -176,7 +176,7 @@ output=$(
   docker run --interactive --tty --rm \
     --volume "$PWD":/project:ro \
     --workdir /project \
-    --entrypoint /project/scripts/makeops/system-detect/system-detect-entrypoint.sh \
+    --entrypoint /project/scripts/makeops/system-detect/system-detect-docker-entrypoint.test.sh \
     mcr.microsoft.com/azure-functions/java:4-java11 \
       /bin/sh -c \
         ./scripts/makeops/system-detect/system-detect.sh
@@ -190,7 +190,7 @@ output=$(
   docker run --interactive --tty --rm \
     --volume "$PWD":/project:ro \
     --workdir /project \
-    --entrypoint /project/scripts/makeops/system-detect/system-detect-entrypoint.sh \
+    --entrypoint /project/scripts/makeops/system-detect/system-detect-docker-entrypoint.test.sh \
     mcr.microsoft.com/azure-functions/node:4-node16 \
       /bin/sh -c \
         ./scripts/makeops/system-detect/system-detect.sh
@@ -204,7 +204,7 @@ output=$(
   docker run --interactive --tty --rm \
     --volume "$PWD":/project:ro \
     --workdir /project \
-    --entrypoint /project/scripts/makeops/system-detect/system-detect-entrypoint.sh \
+    --entrypoint /project/scripts/makeops/system-detect/system-detect-docker-entrypoint.test.sh \
     mcr.microsoft.com/azure-functions/dotnet:4 \
       /bin/sh -c \
         ./scripts/makeops/system-detect/system-detect.sh
@@ -220,7 +220,7 @@ output=$(
   docker run --interactive --tty --rm \
     --volume "$PWD":/project:ro \
     --workdir /project \
-    --entrypoint /project/scripts/makeops/system-detect/system-detect-entrypoint.sh \
+    --entrypoint /project/scripts/makeops/system-detect/system-detect-docker-entrypoint.test.sh \
     google/cloud-sdk:378.0.0 \
       /bin/sh -c \
         ./scripts/makeops/system-detect/system-detect.sh
@@ -234,7 +234,7 @@ output=$(
   docker run --interactive --tty --rm \
     --volume "$PWD":/project:ro \
     --workdir /project \
-    --entrypoint /project/scripts/makeops/system-detect/system-detect-entrypoint.sh \
+    --entrypoint /project/scripts/makeops/system-detect/system-detect-docker-entrypoint.test.sh \
     google/cloud-sdk:378.0.0-slim \
       /bin/sh -c \
         ./scripts/makeops/system-detect/system-detect.sh
@@ -248,7 +248,7 @@ output=$(
   docker run --interactive --tty --rm \
     --volume "$PWD":/project:ro \
     --workdir /project \
-    --entrypoint /project/scripts/makeops/system-detect/system-detect-entrypoint.sh \
+    --entrypoint /project/scripts/makeops/system-detect/system-detect-docker-entrypoint.test.sh \
     google/cloud-sdk:378.0.0-alpine \
       /bin/sh -c \
         ./scripts/makeops/system-detect/system-detect.sh
