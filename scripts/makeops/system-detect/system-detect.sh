@@ -109,7 +109,7 @@ elif grep -iq "amazon linux" /etc/os-release 2> /dev/null; then
 fi
 
 # Detect if inside Docker
-if grep -iq docker /proc/1/cgroup 2> /dev/null || head -n 1 /proc/1/sched 2> /dev/null | grep -Eq '^(bash|sh) ' || head -n 1 /proc/1/sched 2> /dev/null | grep -Eqv '^init '; then
+if grep -iq docker /proc/1/cgroup 2> /dev/null || head -n 1 /proc/1/sched 2> /dev/null | grep -Eq '^(bash|sh) ' || [ -f /.dockerenv ]; then
   SYSTEM_CONTAINER="true"
 fi
 
