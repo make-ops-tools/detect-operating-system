@@ -21,7 +21,7 @@ SYSTEM_CONTAINER="false"
 
 # ==============================================================================
 
-# Detect if macOS
+# Detect macOS
 if uname -s | grep -iq "darwin"; then
 
   SYSTEM_NAME="unix"
@@ -40,7 +40,7 @@ if uname -s | grep -iq "darwin"; then
   uname -m | grep -q "x86_64" && SYSTEM_ARCH_NAME="amd64"
   uname -m | grep -q "arm" && SYSTEM_ARCH_NAME="arm64"
 
-# Detect if Debian family
+# Detect Debian family
 elif [ -f /etc/debian_version ]; then
 
   id="$(grep "^ID=" /etc/os-release | awk -F= '{ print $2 }')"
@@ -60,7 +60,7 @@ elif [ -f /etc/debian_version ]; then
   uname -m | grep -q "64" && SYSTEM_ARCH_NAME="amd64"
   { uname -m | grep -q "arm[_]*64" || uname -m | grep -q "aarch64"; } && SYSTEM_ARCH_NAME="arm64"
 
-# Detect if RedHat family
+# Detect RedHat family
 elif [ -f /etc/redhat-release ]; then
 
   SYSTEM_DIST=$(sed s/\ release.*// /etc/redhat-release | tr "[:upper:]" "[:lower:]")
@@ -73,7 +73,7 @@ elif [ -f /etc/redhat-release ]; then
   uname -m | grep -q "64" && SYSTEM_ARCH_NAME="amd64"
   { uname -m | grep -q "arm[_]*64" || uname -m | grep -q "aarch64"; } && SYSTEM_ARCH_NAME="arm64"
 
-# Detect if Alpine
+# Detect Alpine
 elif which apk > /dev/null 2>&1; then
 
   SYSTEM_DIST="alpine"
@@ -84,7 +84,7 @@ elif which apk > /dev/null 2>&1; then
   uname -m | grep -q "64" && SYSTEM_ARCH_NAME="amd64"
   { uname -m | grep -q "arm[_]*64" || uname -m | grep -q "aarch64"; } && SYSTEM_ARCH_NAME="arm64"
 
-# Detect if Busybox
+# Detect Busybox
 elif which busybox > /dev/null 2>&1; then
 
   SYSTEM_DIST="busybox"
@@ -95,10 +95,21 @@ elif which busybox > /dev/null 2>&1; then
   uname -m | grep -q "64" && SYSTEM_ARCH_NAME="amd64"
   { uname -m | grep -q "arm[_]*64" || uname -m | grep -q "aarch64"; } && SYSTEM_ARCH_NAME="arm64"
 
+# Detect Amazon Linux
+elif grep -iq "amazon linux" /etc/os-release 2> /dev/null; then
+
+  SYSTEM_DIST="amazon"
+  SYSTEM_DIST_BASED_ON="redhat"
+  SYSTEM_PSEUDO_NAME=
+  SYSTEM_VERSION=$(grep "^VARIANT_ID=" /etc/os-release | awk -F= '{ print $2 }' | sed s/\"//g)
+  SYSTEM_ARCH_NAME="i386"
+  uname -m | grep -q "64" && SYSTEM_ARCH_NAME="amd64"
+  { uname -m | grep -q "arm[_]*64" || uname -m | grep -q "aarch64"; } && SYSTEM_ARCH_NAME="arm64"
+
 fi
 
 # Detect if inside Docker
-if grep -qi docker /proc/1/cgroup 2> /dev/null || head -n 1 /proc/1/sched 2> /dev/null | grep -q sh; then
+if grep -iq docker /proc/1/cgroup 2> /dev/null || head -n 1 /proc/1/sched 2> /dev/null | grep -q '.sh' || head -n 1 /proc/1/sched 2> /dev/null | grep -qv 'init'; then
   SYSTEM_CONTAINER="true"
 fi
 
