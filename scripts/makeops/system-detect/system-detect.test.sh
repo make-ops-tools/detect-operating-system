@@ -127,6 +127,20 @@ echo "$output" | grep -E "SYSTEM_DIST=amazon"
 echo "$output" | grep -E "SYSTEM_VERSION=202203161534-2.0.771.0"
 echo "$output" | grep -E "SYSTEM_CONTAINER=true"
 
+# Amazon Corretto cloud image
+output=$(
+  docker run --interactive --tty --rm \
+    --volume "$PWD":/project:ro \
+    --workdir /project \
+    --entrypoint /project/scripts/makeops/system-detect/system-detect-docker-entrypoint.test.sh \
+    amazoncorretto:17 \
+      /bin/sh -c \
+        ./scripts/makeops/system-detect/system-detect.sh
+)
+echo "$output" | grep -E "SYSTEM_DIST=amazon"
+echo "$output" | grep -E "SYSTEM_VERSION=2"
+echo "$output" | grep -E "SYSTEM_CONTAINER=true"
+
 # AWS Lambda (NodeJS) cloud image
 output=$(
   docker run --interactive --tty --rm \

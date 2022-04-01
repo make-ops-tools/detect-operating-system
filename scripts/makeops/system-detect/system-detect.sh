@@ -102,6 +102,7 @@ elif grep -iq "amazon linux" /etc/os-release 2> /dev/null; then
   SYSTEM_DIST_BASED_ON="redhat"
   SYSTEM_PSEUDO_NAME=
   SYSTEM_VERSION=$(grep "^VARIANT_ID=" /etc/os-release | awk -F= '{ print $2 }' | sed s/\"//g)
+  [ -z "$SYSTEM_VERSION" ] && SYSTEM_VERSION=$(grep "^VERSION_ID=" /etc/os-release | awk -F= '{ print $2 }' | sed s/\"//g)
   SYSTEM_ARCH_NAME="i386"
   uname -m | grep -q "64" && SYSTEM_ARCH_NAME="amd64"
   { uname -m | grep -q "arm[_]*64" || uname -m | grep -q "aarch64"; } && SYSTEM_ARCH_NAME="arm64"
