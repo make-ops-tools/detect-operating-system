@@ -90,7 +90,7 @@ elif which busybox > /dev/null 2>&1; then
   SYSTEM_DIST="busybox"
   SYSTEM_DIST_BASED_ON="busybox"
   SYSTEM_PSEUDO_NAME=
-  SYSTEM_VERSION=$(busybox | head -1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
+  SYSTEM_VERSION=$(busybox | head -n 1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
   SYSTEM_ARCH_NAME="i386"
   uname -m | grep -q "64" && SYSTEM_ARCH_NAME="amd64"
   { uname -m | grep -q "arm[_]*64" || uname -m | grep -q "aarch64"; } && SYSTEM_ARCH_NAME="arm64"
