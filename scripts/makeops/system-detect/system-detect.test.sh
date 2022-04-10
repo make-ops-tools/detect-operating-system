@@ -28,6 +28,8 @@ function test-host-os() {
     env | grep ^SYSTEM_; \
     [ $SYSTEM_NAME = unix ] && [ $SYSTEM_DIST = macos ] && [ $SYSTEM_CONTAINER = false ] \
   '
+
+  return 0
 }
 
 function test-distro-image() {
@@ -112,6 +114,8 @@ function test-distro-image() {
         env | grep ^SYSTEM_; \
         [ $SYSTEM_DIST = busybox ] && [ $SYSTEM_VERSION = 1.34.1 ] && [ $SYSTEM_CONTAINER = true ] \
       '
+
+  return 0
 }
 
 function test-cloud-image() {
@@ -287,6 +291,8 @@ function test-cloud-image() {
   echo "$output" | grep -E "SYSTEM_DIST=alpine"
   echo "$output" | grep -E "SYSTEM_VERSION=3.13.8"
   echo "$output" | grep -E "SYSTEM_CONTAINER=true"
+
+  return 0
 }
 
 # ==============================================================================
