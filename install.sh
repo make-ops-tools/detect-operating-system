@@ -93,6 +93,8 @@ function finish() {
   tput setaf 21
   printf "\nAll done!\n\n"
   tput sgr0
+
+  return 0
 }
 
 # ==============================================================================
