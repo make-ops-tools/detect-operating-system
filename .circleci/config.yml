@@ -23,4 +23,4 @@ jobs:
           name: Run Installation Test
           command: |
             curl -L bit.ly/makeops-system-detect | sudo bash
-            whereis system-detect
+            test -x /usr/local/bin/system-detect
