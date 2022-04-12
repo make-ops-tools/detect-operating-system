@@ -3,7 +3,7 @@
 # Project installation script.
 #
 # Usage:
-#   $ [options] curl -L bit.ly/makeops-system-detect | bash
+#   $ [options] curl -L bit.ly/makeops-system-detect | [sudo] bash
 #
 # Options:
 #   BRANCH_NAME=other-branch-than-main
@@ -13,18 +13,19 @@
 # ==============================================================================
 
 BRANCH_NAME=${BRANCH_NAME:-main}
-INSTALL_DIR=${INSTALL_DIR:-$HOME/.makeops/system-detect}
+INSTALL_DIR=${INSTALL_DIR:-/opt/makeops/system-detect}
 ORG_NAME=makeops-scripts
 PROJECT_NAME=makeops-system-detect
 REPO_NAME=system-detect
 SCRIPTS_ONLY=${SCRIPTS_ONLY:-false}
+CMD_NAME=$REPO_NAME
 
 # ==============================================================================
 
 function main() {
 
   clone || download
-  check
+  check && install
   finish
 }
 
@@ -78,9 +79,17 @@ function check() {
   printf "Docker [%s]\n" "$value"
 }
 
+function install() {
+
+  ln -sf \
+    $INSTALL_DIR/scripts/makeops/$REPO_NAME/$REPO_NAME.sh \
+    /usr/local/bin/$CMD_NAME
+}
+
 function finish() {
 
-  printf "\nProject installed in %s\n" "$INSTALL_DIR"
+  printf "\nProject installed in '%s'\n" "$INSTALL_DIR"
+  printf "Executable placed in '%s'\n" "/usr/local/bin/$CMD_NAME"
   tput setaf 21
   printf "\nAll done!\n\n"
   tput sgr0

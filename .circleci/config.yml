@@ -16,6 +16,11 @@ jobs:
           command: |
             make show-configuration
       - run:
-          name: Run Test Suite
+          name: Run Functional Test Suite
           command: |
             make test
+      - run:
+          name: Run Installation Test
+          command: |
+            curl -L bit.ly/makeops-system-detect | sudo bash
+            whereis system-detect
