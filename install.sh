@@ -14,7 +14,7 @@
 
 BRANCH_NAME=${BRANCH_NAME:-main}
 INSTALL_DIR=${INSTALL_DIR:-/opt/makeops/system-detect}
-ORG_NAME=makeops-scripts
+ORG_NAME=makeops-tools
 PROJECT_NAME=makeops-system-detect
 REPO_NAME=system-detect
 SCRIPTS_ONLY=${SCRIPTS_ONLY:-false}
