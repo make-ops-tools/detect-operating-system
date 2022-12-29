@@ -35,6 +35,7 @@ if uname -s | grep -iq "darwin"; then
   sw_vers -productVersion | grep -q 10.15 && SYSTEM_PSEUDO_NAME="Catalina"
   sw_vers -productVersion | grep -q 11. && SYSTEM_PSEUDO_NAME="Big Sur"
   sw_vers -productVersion | grep -q 12. && SYSTEM_PSEUDO_NAME="Monterey"
+  sw_vers -productVersion | grep -q 13. && SYSTEM_PSEUDO_NAME="Ventura"
   SYSTEM_VERSION=$(sw_vers -productVersion)
   SYSTEM_ARCH_NAME="i386"
   uname -m | grep -q "x86_64" && SYSTEM_ARCH_NAME="amd64"
