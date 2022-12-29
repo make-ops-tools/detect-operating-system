@@ -1,10 +1,10 @@
-# Make Ops Tools - System Detect Script
+# Make Ops Tools - Detect Operating System
 
 [![makeops-tools](https://circleci.com/gh/makeops-tools/system-detect.svg?style=svg)](https://app.circleci.com/pipelines/github/makeops-tools/system-detect)
 
 ## Table of Contents
 
-- [Make Ops Tools - System Detect Script](#make-ops-tools---system-detect-script)
+- [Make Ops Tools - Detect Operating System](#make-ops-tools---detect-operating-system)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Quick Start](#quick-start)
@@ -12,7 +12,7 @@
 
 ## Overview
 
-A small utility to detect `*nix` operating system info. It works in `shell` and aims to correctly recognise distributions like
+A small utility script to detect `*nix` operating system. It works in `shell` and aims to correctly recognise distributions like
 
 - Alpine
 - Debian
@@ -25,14 +25,14 @@ and more.
 This utility can be installed locally in the user's home directory
 
 ```bash
-$ curl -L bit.ly/makeops-system-detect | bash
+$ curl -L bit.ly/makeops-detect-os | bash
 ```
 
 A quick test can be done using the `make` targets provided
 
 ```bash
-$ cd ~/.makeops/system-detect
-$ make system-detect
+$ cd ~/.makeops-tools/detect-operating-system
+$ make detect-os
 $ make test
 ```
 
@@ -41,7 +41,7 @@ $ make test
 Example 1: Print exports only
 
 ```bash
-$ ./scripts/makeops/system-detect/system-detect.sh
+$ ./scripts/detect-operating-system.sh
 export SYSTEM_NAME=unix
 export SYSTEM_DIST=macos
 export SYSTEM_DIST_BASED_ON=bsd
@@ -56,7 +56,7 @@ export SYSTEM_CONTAINER=false
 Example 2: Export as system variables
 
 ```bash
-$ eval "$(./scripts/makeops/system-detect/system-detect.sh)"
+$ eval "$(./scripts/detect-operating-system.sh)"
 $ env | grep ^SYSTEM_
 SYSTEM_NAME=unix
 SYSTEM_DIST=macos

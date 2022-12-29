@@ -1,8 +1,8 @@
 {
   "folders": [
     {
-      "name": "Make Ops Tools - System Detect Script",
-      "path": "./scripts/makeops/system-detect"
+      "name": "Make Ops Tools - Detect Operating System",
+      "path": "./scripts"
     },
     {
       "name": "Project Repository",
@@ -33,29 +33,8 @@
     "terminal.integrated.fontFamily": "Hack Nerd Font",
     "window.title": "${activeEditorMedium}${separator}${rootName}${separator}${rootPath}",
     "window.zoomLevel": 0,
-    "workbench.colorTheme": "Noctis Azureus",
+    "workbench.colorTheme": "Deep Jungle",
     "workbench.editor.enablePreview": false,
-    "workbench.tree.indent": 24,
-    "workbench.colorCustomizations": {
-      "activityBar.background": "#1accff",
-      "activityBar.activeBackground": "#1accff",
-      "activityBar.activeBorder": "#df00ad",
-      "activityBar.foreground": "#15202b",
-      "activityBar.inactiveForeground": "#15202b99",
-      "activityBarBadge.background": "#df00ad",
-      "activityBarBadge.foreground": "#e7e7e7",
-      "titleBar.activeBackground": "#00b3e6",
-      "titleBar.inactiveBackground": "#00b3e699",
-      "titleBar.activeForeground": "#15202b",
-      "titleBar.inactiveForeground": "#15202b99",
-      "statusBar.background": "#00b3e6",
-      "statusBarItem.hoverBackground": "#008bb3",
-      "statusBar.foreground": "#15202b",
-      "sash.hoverBorder": "#1accff",
-      "statusBarItem.remoteBackground": "#00b3e6",
-      "statusBarItem.remoteForeground": "#15202b"
-    },
-    "peacock.color": "#00b3e6",
-    "makefile.extensionOutputFolder": "./.vscode"
+    "workbench.tree.indent": 24
   }
 }

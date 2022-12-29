@@ -3,7 +3,7 @@
 # Project installation script.
 #
 # Usage:
-#   $ [options] curl -L bit.ly/makeops-system-detect | [sudo] bash
+#   $ [options] curl -L bit.ly/makeops-detect-os | [sudo] bash
 #
 # Options:
 #   BRANCH_NAME=other-branch-than-main
