@@ -64,7 +64,7 @@ function test-distro-image() {
       /bin/sh -c ' \
         eval "$(./scripts/makeops/system-detect/system-detect.sh)"; \
         env | grep ^SYSTEM_; \
-        [ $SYSTEM_DIST = kali ] && [ $SYSTEM_VERSION = 2022.2 ] && [ $SYSTEM_CONTAINER = true ] \
+        [ $SYSTEM_DIST = kali ] && [ $SYSTEM_VERSION = 2022.4 ] && [ $SYSTEM_CONTAINER = true ] \
       '
 
   # --------------------------------------
@@ -203,7 +203,7 @@ function test-cloud-image() {
           ./scripts/makeops/system-detect/system-detect.sh
   )
   echo "$output" | grep -E "SYSTEM_DIST=debian"
-  echo "$output" | grep -E "SYSTEM_VERSION=11.3"
+  echo "$output" | grep -E "SYSTEM_VERSION=11.5"
   echo "$output" | grep -E "SYSTEM_CONTAINER=true"
 
   # Azure Functions (Java) cloud image
@@ -217,7 +217,7 @@ function test-cloud-image() {
           ./scripts/makeops/system-detect/system-detect.sh
   )
   echo "$output" | grep -E "SYSTEM_DIST=debian"
-  echo "$output" | grep -E "SYSTEM_VERSION=11.3"
+  echo "$output" | grep -E "SYSTEM_VERSION=11.5"
   echo "$output" | grep -E "SYSTEM_CONTAINER=true"
 
   # Azure Functions (NodeJS) cloud image
@@ -231,7 +231,7 @@ function test-cloud-image() {
           ./scripts/makeops/system-detect/system-detect.sh
   )
   echo "$output" | grep -E "SYSTEM_DIST=debian"
-  echo "$output" | grep -E "SYSTEM_VERSION=11.3"
+  echo "$output" | grep -E "SYSTEM_VERSION=11.5"
   echo "$output" | grep -E "SYSTEM_CONTAINER=true"
 
   # Azure Functions (.NET) cloud image
@@ -245,7 +245,7 @@ function test-cloud-image() {
           ./scripts/makeops/system-detect/system-detect.sh
   )
   echo "$output" | grep -E "SYSTEM_DIST=debian"
-  echo "$output" | grep -E "SYSTEM_VERSION=11.3"
+  echo "$output" | grep -E "SYSTEM_VERSION=11.5"
   echo "$output" | grep -E "SYSTEM_CONTAINER=true"
 
   # --------------------------------------
