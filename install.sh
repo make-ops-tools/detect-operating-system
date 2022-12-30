@@ -71,11 +71,13 @@ function check() {
   printf "Prerequisites:\n"
 
   [ -x /bin/bash ] && value=$present || value=$missing
-  printf "Bash [%s]\n" "$value"
+  printf "bash [%s]\n" "$value"
   (make --version 2> /dev/null | grep -i "gnu make" | grep -Eq '[4]\.[0-9]+') && value=$present || value=$missing
-  printf "GNU make [%s]\n" "$value"
+  printf "make [%s]\n" "$value"
+  which git > /dev/null 2>&1 && value=$present || value=$missing
+  printf "git [%s]\n" "$value"
   which docker > /dev/null 2>&1 && value=$present || value=$missing
-  printf "Docker [%s]\n" "$value"
+  printf "docker [%s]\n" "$value"
 }
 
 function install() {
