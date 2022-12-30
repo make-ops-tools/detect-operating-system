@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-# Project installation script.
+# Project installation script
 #
 # Usage:
 #   $ [options] curl -L https://raw.githubusercontent.com/makeops-tools/detect-operating-system/main/install.sh | bash
@@ -9,6 +9,7 @@
 #   BRANCH_NAME=other-branch-than-main      # Default is `main`
 #   INSTALL_DIR=other-dir-than-install-dir  # Default is `~/.makeops-tools/detect-operating-system`
 #   CLONE_REPO=true                         # Default is `false`
+#   VERBOSE=true                            # Default is `false`
 
 # ==============================================================================
 
@@ -117,4 +118,5 @@ function is_arg_false() {
 
 # ==============================================================================
 
+is_arg_true "$VERBOSE" && set -x
 main

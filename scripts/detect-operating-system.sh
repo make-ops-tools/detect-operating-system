@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-# Detect *nix operating system info.
+# Detect *nix operating system info
 #
 # Usage:
 #   $ eval "$(./detect-operating-system.sh)"
