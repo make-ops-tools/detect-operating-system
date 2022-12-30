@@ -22,5 +22,5 @@ jobs:
       - run:
           name: Run Installation Test
           command: |
-            curl -L bit.ly/makeops-system-detect | sudo bash
-            test -x /usr/local/bin/system-detect
+            curl -L https://raw.githubusercontent.com/makeops-tools/detect-operating-system/main/install.sh | bash
+            test -x ~/bin/detect-operating-system

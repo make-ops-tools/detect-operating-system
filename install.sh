@@ -1,23 +1,25 @@
-#!/bin/bash -e
+#!/bin/sh -e
 
 # Project installation script.
 #
 # Usage:
-#   $ [options] curl -L bit.ly/makeops-detect-os | [sudo] bash
+#   $ [options] curl -L https://raw.githubusercontent.com/makeops-tools/detect-operating-system/main/install.sh | bash
 #
 # Options:
-#   BRANCH_NAME=other-branch-than-main
-#   INSTALL_DIR=/other/project/scripts
-#   SCRIPTS_ONLY=true
+#   BRANCH_NAME=other-branch-than-main      # Default is `main`
+#   INSTALL_DIR=other-dir-than-install-dir  # Default is `~/.makeops-tools/detect-operating-system`
+#   CLONE_REPO=true                         # Default is `false`
 
 # ==============================================================================
 
-BRANCH_NAME=${BRANCH_NAME:-main}
-INSTALL_DIR=${INSTALL_DIR:-/opt/makeops/system-detect}
 ORG_NAME=makeops-tools
-PROJECT_NAME=makeops-system-detect
-REPO_NAME=system-detect
-SCRIPTS_ONLY=${SCRIPTS_ONLY:-false}
+REPO_NAME=detect-operating-system
+PROJECT_NAME=$ORG_NAME-$REPO_NAME
+
+BRANCH_NAME=${BRANCH_NAME:-main}
+INSTALL_DIR=${INSTALL_DIR:-~/.$ORG_NAME/$REPO_NAME}
+CLONE_REPO=${CLONE_REPO:-false}
+
 CMD_NAME=$REPO_NAME
 
 # ==============================================================================
@@ -31,16 +33,18 @@ function main() {
 
 function clone() {
 
-  if [[ "$SCRIPTS_ONLY" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]]; then
+  if (is_arg_false "$CLONE_REPO" || ! is_arg_true "$CLONE_REPO") then
     return 1
   fi
+
   if ! [ -d "$INSTALL_DIR/.git" ]; then
     mkdir -p "$INSTALL_DIR"
     cd "$INSTALL_DIR"
     git clone https://github.com/$ORG_NAME/$REPO_NAME.git .
+  else
+    cd "$INSTALL_DIR"
+    git pull --all
   fi
-  cd "$INSTALL_DIR"
-  git pull --all
   git checkout "$BRANCH_NAME"
 }
 
@@ -50,29 +54,24 @@ function download() {
     "https://github.com/$ORG_NAME/$REPO_NAME/tarball/$BRANCH_NAME?$(date +%s)" \
     -o /tmp/$PROJECT_NAME.tar.gz
   tar -zxf /tmp/$PROJECT_NAME.tar.gz -C /tmp
-  rm -rf \
-    /tmp/$PROJECT_NAME.tar.gz \
-    /tmp/$PROJECT_NAME*
-  if [[ "$SCRIPTS_ONLY" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]]; then
-    rm /tmp/$ORG_NAME-$REPO_NAME-*/scripts/makeops/$REPO_NAME/init.mk
-    find /tmp/$ORG_NAME-$REPO_NAME-*/scripts/makeops/$REPO_NAME -type f -name '*.test.sh' -exec rm -rf {} \;
-    mkdir -p "$INSTALL_DIR"
-    cp -Rf /tmp/$ORG_NAME-$REPO_NAME-*/scripts/* "$INSTALL_DIR"
-    rm -rf /tmp/$ORG_NAME-$REPO_NAME-*
-  else
-    mv /tmp/$ORG_NAME-$REPO_NAME-* "$INSTALL_DIR"
-  fi
+  rm -rf /tmp/$PROJECT_NAME.tar.gz
+  rm -rf $INSTALL_DIR
+  mkdir -p $(dirname $INSTALL_DIR)
+  mv /tmp/$PROJECT_NAME-* "$INSTALL_DIR"
+  cd "$INSTALL_DIR"
 }
+
+# ==============================================================================
 
 function check() {
 
   present=$(tput setaf 64; printf present;tput sgr0)
   missing=$(tput setaf 196; printf missing;tput sgr0)
 
-  printf "\nPrerequisites:\n\n"
+  printf "Prerequisites:\n"
 
   [ -x /bin/bash ] && value=$present || value=$missing
-  printf "/bin/bash [%s]\n" "$value"
+  printf "Bash [%s]\n" "$value"
   (make --version 2> /dev/null | grep -i "gnu make" | grep -Eq '[4]\.[0-9]+') && value=$present || value=$missing
   printf "GNU make [%s]\n" "$value"
   which docker > /dev/null 2>&1 && value=$present || value=$missing
@@ -81,20 +80,36 @@ function check() {
 
 function install() {
 
+  mkdir -p ~/bin
   ln -sf \
-    $INSTALL_DIR/scripts/makeops/$REPO_NAME/$REPO_NAME.sh \
-    /usr/local/bin/$CMD_NAME
+    $INSTALL_DIR/scripts/$CMD_NAME.sh \
+    ~/bin/$CMD_NAME
 }
 
 function finish() {
 
-  printf "\nProject installed in '%s'\n" "$INSTALL_DIR"
-  printf "Executable placed in '%s'\n" "/usr/local/bin/$CMD_NAME"
-  tput setaf 21
-  printf "\nAll done!\n\n"
-  tput sgr0
+  printf "Project directory %s\n" "$INSTALL_DIR"
+  printf "Executable %s\n" "~/bin/$CMD_NAME"
+}
 
-  return 0
+# ==============================================================================
+
+function is_arg_true() {
+
+  if [[ "$1" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+function is_arg_false() {
+
+  if [[ "$1" =~ ^(false|no|n|off|0|FALSE|NO|N|OFF)$ ]]; then
+    return 0
+  else
+    return 1
+  fi
 }
 
 # ==============================================================================

@@ -2,11 +2,14 @@
   "recommendations": [
     "ban.spellright",
     "davidanson.vscode-markdownlint",
+    "donjayamanne.githistory",
+    "eamodio.gitlens",
     "editorconfig.editorconfig",
     "johnpapa.vscode-peacock",
+    "mhutchie.git-graph",
     "streetsidesoftware.code-spell-checker",
     "vscode-icons-team.vscode-icons",
     "yzhang.dictionary-completion",
-    "yzhang.markdown-all-in-one"
+    "yzhang.markdown-all-in-one",
   ]
 }

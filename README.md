@@ -1,6 +1,6 @@
 # Make Ops Tools - Detect Operating System
 
-[![makeops-tools](https://circleci.com/gh/makeops-tools/system-detect.svg?style=svg)](https://app.circleci.com/pipelines/github/makeops-tools/system-detect)
+[![detect-operating-system](https://circleci.com/gh/makeops-tools/detect-operating-system.svg?style=svg)](https://app.circleci.com/pipelines/github/makeops-tools/detect-operating-system)
 
 ## Table of Contents
 
@@ -25,7 +25,7 @@ and more.
 This utility can be installed locally in the user's home directory
 
 ```bash
-$ curl -L bit.ly/makeops-detect-os | bash
+$ curl -L https://raw.githubusercontent.com/makeops-tools/detect-operating-system/main/install.sh | bash
 ```
 
 A quick test can be done using the `make` targets provided
