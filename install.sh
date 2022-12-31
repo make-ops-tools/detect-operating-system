@@ -13,6 +13,8 @@
 
 # ==============================================================================
 
+SCRIPT_DIR=$([ -n "${BASH_SOURCE[0]}" ] && cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd || dirname "$(readlink -f "$0")")
+
 ORG_NAME=makeops-tools
 REPO_NAME=detect-operating-system
 PROJECT_NAME=$ORG_NAME-$REPO_NAME
@@ -26,6 +28,8 @@ CMD_NAME=$REPO_NAME
 # ==============================================================================
 
 function main() {
+
+  cd $SCRIPT_DIR
 
   clone || download
   check && install
