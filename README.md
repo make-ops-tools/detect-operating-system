@@ -25,7 +25,7 @@ and more.
 This utility can be installed locally in the user's home directory
 
 ```bash
-$ curl -L https://raw.githubusercontent.com/makeops-tools/detect-operating-system/main/install.sh | bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/makeops-tools/detect-operating-system/main/install.sh)"
 ```
 
 A quick test can be done using the `make` targets provided

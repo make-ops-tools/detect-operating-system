@@ -3,7 +3,7 @@
 # Project installation script
 #
 # Usage:
-#   $ [options] curl -L https://raw.githubusercontent.com/makeops-tools/detect-operating-system/main/install.sh | bash
+#   $ [options] /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/makeops-tools/detect-operating-system/main/install.sh)"
 #
 # Options:
 #   BRANCH_NAME=other-branch-than-main      # Default is `main`
