@@ -28,6 +28,8 @@ This utility can be installed locally in the user's home directory
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/makeops-tools/detect-operating-system/main/install.sh)"
 ```
 
+Alternatively, for a quick installation purpose, a shorten and memorable version of the above URL can be used which is [tiny.one/detect-os](https://tiny.one/detect-os).
+
 A quick test can be done using the `make` targets provided
 
 ```bash
