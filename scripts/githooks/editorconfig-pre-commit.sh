@@ -6,6 +6,9 @@
 # Usage:
 #   $ ./editorconfig-pre-commit.sh
 #
+# Options:
+#   BRANCH_NAME=other-branch-than-main  # Branch to compare with
+#
 # Exit codes:
 #   0 - all files are formatted correctly
 #   1 - files are not formatted correctly
@@ -20,7 +23,7 @@
 
 exit_code=0
 image_digest=0f8f8dd4f393d29755bef2aef4391d37c34e358d676e9d66ce195359a9c72ef3 # 2.7.0
-changed_files=$(git diff --name-only --diff-filter=ACMRT)
+changed_files=$((git diff --diff-filter=ACMRT --name-only origin/${BRANCH_NAME:-main}..; git diff --name-only) | sort | uniq)
 
 while read file; do
     docker run --rm --platform linux/amd64 \
