@@ -1,5 +1,9 @@
 name: Deployment Pipeline
 on:
+  workflow_run:
+    workflows: [Check File Format, Check Markdown Format]
+    types:
+      - completed
   push:
     branches:
       - main
@@ -9,7 +13,6 @@ on:
 jobs:
   deployment-pipeline-test:
     runs-on: ubuntu-latest
-    needs: [check-file-format, check-markdown-format]
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v3
