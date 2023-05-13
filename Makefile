@@ -1,3 +1,9 @@
+config: githooks-install # Configure development environment
+
+githooks-install: # Install git hooks configured in this repository
+	echo "./scripts/githooks/pre-commit" > .git/hooks/pre-commit
+	chmod +x .git/hooks/pre-commit
+
 detect-os: # Detect operating system and print export variables
 	./scripts/detect-operating-system.sh
 
@@ -33,5 +39,7 @@ else
 endif
 
 .SILENT: \
+	config \
 	detect-os \
+	githooks-install \
 	test
