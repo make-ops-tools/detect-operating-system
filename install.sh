@@ -89,8 +89,8 @@ function check() {
 
 function install() {
 
-  mkdir -p ~/bin
-  ln -sf \
+  mkdir -pv ~/bin
+  ln -sfv \
     $INSTALL_DIR/scripts/$CMD_NAME.sh \
     ~/bin/$CMD_NAME
 }
