@@ -24,15 +24,24 @@ and more.
 
 This utility can be installed locally in the user's home directory
 
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/makeops-tools/detect-operating-system/main/install.sh)"
+- as a standalone script
+
+```console
+curl -fsLS https://raw.githubusercontent.com/make-ops-tools/detect-operating-system/main/scripts/detect-operating-system.sh > ~/bin/detect-operating-system
+chmod +x ~/bin/detect-operating-system
+```
+
+- along with the project files
+
+```console
+sh -c "$(curl -fsLS https://raw.githubusercontent.com/makeops-tools/detect-operating-system/main/install.sh)"
 ```
 
 Alternatively, for a quick installation purpose, a shorten and memorable version of the above URL can be used which is [tiny.one/detect-os](https://tiny.one/detect-os).
 
 A quick test can be done using the `make` targets provided
 
-```bash
+```console
 cd ~/.makeops-tools/detect-operating-system
 make detect-os
 make test
@@ -42,7 +51,7 @@ make test
 
 Example 1: Print exports only
 
-```bash
+```console
 $ ./scripts/detect-operating-system.sh
 export SYSTEM_NAME=unix
 export SYSTEM_DIST=macos
@@ -57,7 +66,7 @@ export SYSTEM_CONTAINER=false
 
 Example 2: Export as system variables
 
-```bash
+```console
 $ eval "$(./scripts/detect-operating-system.sh)"
 $ env | grep ^SYSTEM_
 SYSTEM_NAME=unix

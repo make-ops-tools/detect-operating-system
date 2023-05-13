@@ -7,8 +7,8 @@
 #   $ ./editorconfig-pre-commit.sh
 #
 # Options:
-#   BRANCH_NAME=other-branch-than-main  # Branch to compare with
-#   ALL_FILES=true                      # Check all files
+#   BRANCH_NAME=other-branch-than-main  # Branch to compare with, default is `origin/main`
+#   ALL_FILES=true                      # Check all files, default is `false`
 #
 # Exit codes:
 #   0 - All files are formatted correctly
