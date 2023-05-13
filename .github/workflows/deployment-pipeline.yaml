@@ -10,9 +10,9 @@ on:
 
 jobs:
   deployment-pipeline-check-file-format:
-    uses: ./.github/workflows/check-file-format.yml
+    uses: ./.github/workflows/check-file-format.yaml
   deployment-pipeline-check-markdown-format:
-    uses: ./.github/workflows/check-markdown-format.yml
+    uses: ./.github/workflows/check-markdown-format.yaml
   deployment-pipeline-test:
     runs-on: ubuntu-latest
     timeout-minutes: 5
