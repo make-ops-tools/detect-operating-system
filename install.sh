@@ -3,11 +3,11 @@
 # Project installation script
 #
 # Usage:
-#   $ [options] /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/makeops-tools/detect-operating-system/main/install.sh)"
+#   $ [options] /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/make-ops-tools/detect-operating-system/main/install.sh)"
 #
 # Options:
 #   BRANCH_NAME=other-branch-than-main      # Default is `main`
-#   INSTALL_DIR=other-dir-than-install-dir  # Default is `~/.makeops-tools/detect-operating-system`
+#   INSTALL_DIR=other-dir-than-install-dir  # Default is `~/.make-ops-tools/detect-operating-system`
 #   CLONE_REPO=true                         # Default is `false`
 #   VERBOSE=true                            # Default is `false`
 
@@ -15,7 +15,7 @@
 
 SCRIPT_DIR=$([ -n "${BASH_SOURCE[0]}" ] && cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd || dirname "$(readlink -f "$0")")
 
-ORG_NAME=makeops-tools
+ORG_NAME=make-ops-tools
 REPO_NAME=detect-operating-system
 PROJECT_NAME=$ORG_NAME-$REPO_NAME
 
