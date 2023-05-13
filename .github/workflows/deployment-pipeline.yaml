@@ -1,10 +1,18 @@
 name: Deployment Pipeline
+
 on:
-  workflow_run:
-    workflows: [Check File Format, Check Markdown Format]
-    types:
-      - completed
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
 jobs:
+  deployment-pipeline-check-file-format:
+    uses: ./.github/workflows/check-file-format.yml
+  deployment-pipeline-check-markdown-format:
+    uses: ./.github/workflows/check-markdown-format.yml
   deployment-pipeline-test:
     runs-on: ubuntu-latest
     timeout-minutes: 5
