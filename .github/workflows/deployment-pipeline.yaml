@@ -9,13 +9,13 @@ on:
       - main
 
 jobs:
-  deployment-pipeline-check-file-format:
+  check-file-format:
     uses: ./.github/workflows/check-file-format.yaml
-  deployment-pipeline-check-markdown-format:
+  check-markdown-format:
     uses: ./.github/workflows/check-markdown-format.yaml
   deployment-pipeline-test:
     runs-on: ubuntu-latest
-    needs: [deployment-pipeline-check-file-format, deployment-pipeline-check-markdown-format]
+    needs: [check-file-format, check-markdown-format]
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v3
