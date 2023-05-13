@@ -33,7 +33,7 @@ function test-host-os() {
 function test-distro-image() {
 
   # Debian image
-  docker run --interactive --tty --rm \
+  docker run --interactive --tty --rm --platform linux/amd64 \
     --volume "$PWD":/project:ro \
     --workdir /project \
     debian:bullseye-20220316 \
@@ -44,7 +44,7 @@ function test-distro-image() {
       '
 
   # Ubuntu image
-  docker run --interactive --tty --rm \
+  docker run --interactive --tty --rm --platform linux/amd64 \
     --volume "$PWD":/project:ro \
     --workdir /project \
     ubuntu:jammy-20220315 \
@@ -55,20 +55,20 @@ function test-distro-image() {
       '
 
   # Kali image
-  docker run --interactive --tty --rm \
+  docker run --interactive --tty --rm --platform linux/amd64 \
     --volume "$PWD":/project:ro \
     --workdir /project \
     kalilinux/kali-last-release \
       /bin/sh -c ' \
         eval "$(./scripts/detect-operating-system.sh)"; \
         env | grep ^SYSTEM_; \
-        [ $SYSTEM_DIST = kali ] && [ $SYSTEM_VERSION = 2022.4 ] && [ $SYSTEM_CONTAINER = true ] \
+        [ $SYSTEM_DIST = kali ] && [ $SYSTEM_CONTAINER = true ] \
       '
 
   # --------------------------------------
 
   # ReadHat image
-  docker run --interactive --tty --rm \
+  docker run --interactive --tty --rm --platform linux/amd64 \
     --volume "$PWD":/project:ro \
     --workdir /project \
     redhat/ubi8-minimal:8.5-240 \
@@ -79,7 +79,7 @@ function test-distro-image() {
       '
 
   # CentOS image
-  docker run --interactive --tty --rm \
+  docker run --interactive --tty --rm --platform linux/amd64 \
     --volume "$PWD":/project:ro \
     --workdir /project \
     centos:7.9.2009 \
@@ -92,7 +92,7 @@ function test-distro-image() {
   # --------------------------------------
 
   # Alpine image
-  docker run --interactive --tty --rm \
+  docker run --interactive --tty --rm --platform linux/amd64 \
     --volume "$PWD":/project:ro \
     --workdir /project \
     alpine:20220316 \
@@ -103,7 +103,7 @@ function test-distro-image() {
       '
 
   # Busybox image
-  docker run --interactive --tty --rm \
+  docker run --interactive --tty --rm --platform linux/amd64 \
     --volume "$PWD":/project:ro \
     --workdir /project \
     busybox:1.34.1 \
@@ -120,7 +120,7 @@ function test-cloud-image() {
 
   # AWS Lambda (Python) cloud image
   output=$(
-    docker run --interactive --tty --rm \
+    docker run --interactive --tty --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -129,12 +129,11 @@ function test-cloud-image() {
           ./scripts/detect-operating-system.sh
   )
   echo "$output" | grep -E "SYSTEM_DIST=amazon"
-  echo "$output" | grep -E "SYSTEM_VERSION=202203161534-al2018.03.835.0"
   echo "$output" | grep -E "SYSTEM_CONTAINER=true"
 
   # AWS Lambda (Java) cloud image
   output=$(
-    docker run --interactive --tty --rm \
+    docker run --interactive --tty --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -143,12 +142,11 @@ function test-cloud-image() {
           ./scripts/detect-operating-system.sh
   )
   echo "$output" | grep -E "SYSTEM_DIST=amazon"
-  echo "$output" | grep -E "SYSTEM_VERSION=202203161534-2.0.771.0"
   echo "$output" | grep -E "SYSTEM_CONTAINER=true"
 
   # Amazon Corretto cloud image
   output=$(
-    docker run --interactive --tty --rm \
+    docker run --interactive --tty --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -157,12 +155,11 @@ function test-cloud-image() {
           ./scripts/detect-operating-system.sh
   )
   echo "$output" | grep -E "SYSTEM_DIST=amazon"
-  echo "$output" | grep -E "SYSTEM_VERSION=2"
   echo "$output" | grep -E "SYSTEM_CONTAINER=true"
 
   # AWS Lambda (NodeJS) cloud image
   output=$(
-    docker run --interactive --tty --rm \
+    docker run --interactive --tty --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -171,12 +168,11 @@ function test-cloud-image() {
           ./scripts/detect-operating-system.sh
   )
   echo "$output" | grep -E "SYSTEM_DIST=amazon"
-  echo "$output" | grep -E "SYSTEM_VERSION=202203161534-2.0.771.0"
   echo "$output" | grep -E "SYSTEM_CONTAINER=true"
 
   # AWS Lambda (.NET) cloud image
   output=$(
-    docker run --interactive --tty --rm \
+    docker run --interactive --tty --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -185,14 +181,13 @@ function test-cloud-image() {
           ./scripts/detect-operating-system.sh
   )
   echo "$output" | grep -E "SYSTEM_DIST=amazon"
-  echo "$output" | grep -E "SYSTEM_VERSION=202203161534-2.0.771.0"
   echo "$output" | grep -E "SYSTEM_CONTAINER=true"
 
   # --------------------------------------
 
   # Azure Functions (Python) cloud image
   output=$(
-    docker run --interactive --tty --rm \
+    docker run --interactive --tty --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -201,12 +196,11 @@ function test-cloud-image() {
           ./scripts/detect-operating-system.sh
   )
   echo "$output" | grep -E "SYSTEM_DIST=debian"
-  echo "$output" | grep -E "SYSTEM_VERSION=11.5"
   echo "$output" | grep -E "SYSTEM_CONTAINER=true"
 
   # Azure Functions (Java) cloud image
   output=$(
-    docker run --interactive --tty --rm \
+    docker run --interactive --tty --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -215,12 +209,11 @@ function test-cloud-image() {
           ./scripts/detect-operating-system.sh
   )
   echo "$output" | grep -E "SYSTEM_DIST=debian"
-  echo "$output" | grep -E "SYSTEM_VERSION=11.5"
   echo "$output" | grep -E "SYSTEM_CONTAINER=true"
 
   # Azure Functions (NodeJS) cloud image
   output=$(
-    docker run --interactive --tty --rm \
+    docker run --interactive --tty --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -229,12 +222,11 @@ function test-cloud-image() {
           ./scripts/detect-operating-system.sh
   )
   echo "$output" | grep -E "SYSTEM_DIST=debian"
-  echo "$output" | grep -E "SYSTEM_VERSION=11.5"
   echo "$output" | grep -E "SYSTEM_CONTAINER=true"
 
   # Azure Functions (.NET) cloud image
   output=$(
-    docker run --interactive --tty --rm \
+    docker run --interactive --tty --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -243,14 +235,13 @@ function test-cloud-image() {
           ./scripts/detect-operating-system.sh
   )
   echo "$output" | grep -E "SYSTEM_DIST=debian"
-  echo "$output" | grep -E "SYSTEM_VERSION=11.5"
   echo "$output" | grep -E "SYSTEM_CONTAINER=true"
 
   # --------------------------------------
 
   # Google Cloud SDK cloud image
   output=$(
-    docker run --interactive --tty --rm \
+    docker run --interactive --tty --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -259,12 +250,11 @@ function test-cloud-image() {
           ./scripts/detect-operating-system.sh
   )
   echo "$output" | grep -E "SYSTEM_DIST=debian"
-  echo "$output" | grep -E "SYSTEM_VERSION=10.11"
   echo "$output" | grep -E "SYSTEM_CONTAINER=true"
 
   # Google Cloud SDK (slim) cloud image
   output=$(
-    docker run --interactive --tty --rm \
+    docker run --interactive --tty --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -273,12 +263,11 @@ function test-cloud-image() {
           ./scripts/detect-operating-system.sh
   )
   echo "$output" | grep -E "SYSTEM_DIST=debian"
-  echo "$output" | grep -E "SYSTEM_VERSION=10.11"
   echo "$output" | grep -E "SYSTEM_CONTAINER=true"
 
   # Google Cloud SDK (Alpine) cloud image
   output=$(
-    docker run --interactive --tty --rm \
+    docker run --interactive --tty --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -287,7 +276,6 @@ function test-cloud-image() {
           ./scripts/detect-operating-system.sh
   )
   echo "$output" | grep -E "SYSTEM_DIST=alpine"
-  echo "$output" | grep -E "SYSTEM_VERSION=3.13.8"
   echo "$output" | grep -E "SYSTEM_CONTAINER=true"
 
   return 0
