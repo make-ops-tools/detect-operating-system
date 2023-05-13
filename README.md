@@ -1,6 +1,6 @@
 # Make Ops Tools - Detect Operating System
 
-[![detect-operating-system](https://circleci.com/gh/makeops-tools/detect-operating-system.svg?style=svg)](https://app.circleci.com/pipelines/github/makeops-tools/detect-operating-system)
+[![detect-operating-system](https://circleci.com/gh/make-ops-tools/detect-operating-system.svg?style=svg)](https://app.circleci.com/pipelines/github/make-ops-tools/detect-operating-system)
 
 ## Table of Contents
 
@@ -34,15 +34,15 @@ chmod +x ~/bin/detect-operating-system
 - along with the project files
 
 ```console
-sh -c "$(curl -fsLS https://raw.githubusercontent.com/makeops-tools/detect-operating-system/main/install.sh)"
+sh -c "$(curl -fsLS https://raw.githubusercontent.com/make-ops-tools/detect-operating-system/main/install.sh)"
 ```
 
-Alternatively, for a quick installation purpose, a shorten and memorable version of the above URL can be used which is [tiny.one/detect-os](https://tiny.one/detect-os).
+Alternatively, for a convenience, a shorten and memorable version of the above URL can be used which is [tiny.one/detect-os](https://tiny.one/detect-os).
 
 A quick test can be done using the `make` targets provided
 
 ```console
-cd ~/.makeops-tools/detect-operating-system
+cd ~/.make-ops-tools/detect-operating-system
 make detect-os
 make test
 ```
