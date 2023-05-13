@@ -71,7 +71,8 @@ function download() {
 function check() {
 
   echo "$TERM"
-  TERM=xterm-256color
+  export TERM=xterm-256color
+  echo "$TERM"
   present=$(tput setaf 64; printf present;tput sgr0)
   missing=$(tput setaf 196; printf missing;tput sgr0)
 
