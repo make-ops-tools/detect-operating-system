@@ -1,5 +1,7 @@
 #!/bin/bash -ex
 
+_TTY=$([ -t 0 ] && echo "--tty" ||:)
+
 # ==============================================================================
 
 function main() {
@@ -33,7 +35,7 @@ function test-host-os() {
 function test-distro-image() {
 
   # Debian image
-  docker run --interactive --tty --rm --platform linux/amd64 \
+  docker run --interactive $(echo $_TTY) --rm --platform linux/amd64 \
     --volume "$PWD":/project:ro \
     --workdir /project \
     debian:bullseye-20220316 \
@@ -44,7 +46,7 @@ function test-distro-image() {
       '
 
   # Ubuntu image
-  docker run --interactive --tty --rm --platform linux/amd64 \
+  docker run --interactive $(echo $_TTY) --rm --platform linux/amd64 \
     --volume "$PWD":/project:ro \
     --workdir /project \
     ubuntu:jammy-20220315 \
@@ -55,7 +57,7 @@ function test-distro-image() {
       '
 
   # Kali image
-  docker run --interactive --tty --rm --platform linux/amd64 \
+  docker run --interactive $(echo $_TTY) --rm --platform linux/amd64 \
     --volume "$PWD":/project:ro \
     --workdir /project \
     kalilinux/kali-last-release \
@@ -68,7 +70,7 @@ function test-distro-image() {
   # --------------------------------------
 
   # ReadHat image
-  docker run --interactive --tty --rm --platform linux/amd64 \
+  docker run --interactive $(echo $_TTY) --rm --platform linux/amd64 \
     --volume "$PWD":/project:ro \
     --workdir /project \
     redhat/ubi8-minimal:8.5-240 \
@@ -79,7 +81,7 @@ function test-distro-image() {
       '
 
   # CentOS image
-  docker run --interactive --tty --rm --platform linux/amd64 \
+  docker run --interactive $(echo $_TTY) --rm --platform linux/amd64 \
     --volume "$PWD":/project:ro \
     --workdir /project \
     centos:7.9.2009 \
@@ -92,7 +94,7 @@ function test-distro-image() {
   # --------------------------------------
 
   # Alpine image
-  docker run --interactive --tty --rm --platform linux/amd64 \
+  docker run --interactive $(echo $_TTY) --rm --platform linux/amd64 \
     --volume "$PWD":/project:ro \
     --workdir /project \
     alpine:20220316 \
@@ -103,7 +105,7 @@ function test-distro-image() {
       '
 
   # Busybox image
-  docker run --interactive --tty --rm --platform linux/amd64 \
+  docker run --interactive $(echo $_TTY) --rm --platform linux/amd64 \
     --volume "$PWD":/project:ro \
     --workdir /project \
     busybox:1.34.1 \
@@ -120,7 +122,7 @@ function test-cloud-image() {
 
   # AWS Lambda (Python) cloud image
   output=$(
-    docker run --interactive --tty --rm --platform linux/amd64 \
+    docker run --interactive $(echo $_TTY) --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -133,7 +135,7 @@ function test-cloud-image() {
 
   # AWS Lambda (Java) cloud image
   output=$(
-    docker run --interactive --tty --rm --platform linux/amd64 \
+    docker run --interactive $(echo $_TTY) --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -146,7 +148,7 @@ function test-cloud-image() {
 
   # Amazon Corretto cloud image
   output=$(
-    docker run --interactive --tty --rm --platform linux/amd64 \
+    docker run --interactive $(echo $_TTY) --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -159,7 +161,7 @@ function test-cloud-image() {
 
   # AWS Lambda (NodeJS) cloud image
   output=$(
-    docker run --interactive --tty --rm --platform linux/amd64 \
+    docker run --interactive $(echo $_TTY) --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -172,7 +174,7 @@ function test-cloud-image() {
 
   # AWS Lambda (.NET) cloud image
   output=$(
-    docker run --interactive --tty --rm --platform linux/amd64 \
+    docker run --interactive $(echo $_TTY) --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -187,7 +189,7 @@ function test-cloud-image() {
 
   # Azure Functions (Python) cloud image
   output=$(
-    docker run --interactive --tty --rm --platform linux/amd64 \
+    docker run --interactive $(echo $_TTY) --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -200,7 +202,7 @@ function test-cloud-image() {
 
   # Azure Functions (Java) cloud image
   output=$(
-    docker run --interactive --tty --rm --platform linux/amd64 \
+    docker run --interactive $(echo $_TTY) --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -213,7 +215,7 @@ function test-cloud-image() {
 
   # Azure Functions (NodeJS) cloud image
   output=$(
-    docker run --interactive --tty --rm --platform linux/amd64 \
+    docker run --interactive $(echo $_TTY) --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -226,7 +228,7 @@ function test-cloud-image() {
 
   # Azure Functions (.NET) cloud image
   output=$(
-    docker run --interactive --tty --rm --platform linux/amd64 \
+    docker run --interactive $(echo $_TTY) --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -241,7 +243,7 @@ function test-cloud-image() {
 
   # Google Cloud SDK cloud image
   output=$(
-    docker run --interactive --tty --rm --platform linux/amd64 \
+    docker run --interactive $(echo $_TTY) --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -254,7 +256,7 @@ function test-cloud-image() {
 
   # Google Cloud SDK (slim) cloud image
   output=$(
-    docker run --interactive --tty --rm --platform linux/amd64 \
+    docker run --interactive $(echo $_TTY) --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
@@ -267,7 +269,7 @@ function test-cloud-image() {
 
   # Google Cloud SDK (Alpine) cloud image
   output=$(
-    docker run --interactive --tty --rm --platform linux/amd64 \
+    docker run --interactive $(echo $_TTY) --rm --platform linux/amd64 \
       --volume "$PWD":/project:ro \
       --workdir /project \
       --entrypoint /project/scripts/detect-operating-system-docker-entrypoint.test.sh \
