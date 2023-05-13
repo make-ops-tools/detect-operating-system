@@ -9,8 +9,12 @@ on:
       - main
 
 jobs:
-  datetime:
+  get-datetime:
     runs-on: ubuntu-latest
+    outputs:
+      datetime: ${{ steps.datetime.outputs.datetime }}
+      timestamp: ${{ steps.datetime.outputs.timestamp }}
+      epoch: ${{ steps.datetime.outputs.epoch }}
     steps:
       - id: datetime
         run: |
@@ -30,9 +34,9 @@ jobs:
       - uses: actions/checkout@v3
       - name: List Variables
         run: |
-          export BUILD_DATETIME="${{ jobs.datetime.steps.datetime.outputs.datetime }}"
-          export BUILD_TIMESTAMP="${{ jobs.datetime.steps.datetime.outputs.timestamp }}"
-          export BUILD_EPOCH="${{ jobs.datetime.steps.datetime.outputs.epoch }}"
+          export BUILD_DATETIME="${{ needs.get-datetime.outputs.datetime }}"
+          export BUILD_TIMESTAMP="${{ needs.get-datetime.outputs.timestamp }}"
+          export BUILD_EPOCH="${{ needs.get-datetime.outputs.epoch }}"
           make list-variables
       - name: Run Functional Test Suite
         run: |
