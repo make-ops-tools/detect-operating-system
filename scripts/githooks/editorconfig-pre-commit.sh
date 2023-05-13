@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 # Pre-commit git hook to check the EditorConfig rules complience over changed
 # files.
