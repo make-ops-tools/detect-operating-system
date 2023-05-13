@@ -8,10 +8,11 @@
 #
 # Options:
 #   BRANCH_NAME=other-branch-than-main  # Branch to compare with
+#   ALL_FILES=true                      # Check all files
 #
 # Exit codes:
-#   0 - all files are formatted correctly
-#   1 - files are not formatted correctly
+#   0 - All files are formatted correctly
+#   1 - Files are not formatted correctly
 #
 # Notes:
 #   1) Please, make sure to enable Markdown linting in your IDE. For the Visual
@@ -23,7 +24,10 @@
 
 exit_code=0
 image_digest=0f8f8dd4f393d29755bef2aef4391d37c34e358d676e9d66ce195359a9c72ef3 # 2.7.0
-changed_files=$(git diff --diff-filter=ACMRT --name-only ${BRANCH_NAME:-origin/main})
+changed_files=$([[ "$ALL_FILES" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]] && \
+  git grep --cached -Il '' || \
+  git diff --diff-filter=ACMRT --name-only ${BRANCH_NAME:-origin/main} \
+)
 
 while read file; do
     docker run --rm --platform linux/amd64 \

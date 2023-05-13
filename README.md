@@ -33,9 +33,9 @@ Alternatively, for a quick installation purpose, a shorten and memorable version
 A quick test can be done using the `make` targets provided
 
 ```bash
-$ cd ~/.makeops-tools/detect-operating-system
-$ make detect-os
-$ make test
+cd ~/.makeops-tools/detect-operating-system
+make detect-os
+make test
 ```
 
 ## Usage
