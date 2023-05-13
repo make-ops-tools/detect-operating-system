@@ -1,7 +1,5 @@
 # Make Ops Tools - Detect Operating System
 
-[![detect-operating-system](https://circleci.com/gh/make-ops-tools/detect-operating-system.svg?style=svg)](https://app.circleci.com/pipelines/github/make-ops-tools/detect-operating-system)
-
 ## Table of Contents
 
 - [Make Ops Tools - Detect Operating System](#make-ops-tools---detect-operating-system)
