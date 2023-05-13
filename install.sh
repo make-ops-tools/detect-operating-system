@@ -13,7 +13,8 @@
 
 # ==============================================================================
 
-TERM=xterm-256color
+export TERM=xterm-256color
+
 SCRIPT_DIR=$([ -n "${BASH_SOURCE[0]}" ] && cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd || dirname "$(readlink -f "$0")")
 
 ORG_NAME=make-ops-tools

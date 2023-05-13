@@ -32,7 +32,7 @@ list-variables: # List all the variables available to make
 .PHONY: *
 MAKEFLAGS := --no-print-director
 SHELL := /bin/bash
-ifeq (true, $(shell [[ "$(DEBUG)" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$$ ]] && echo true))
+ifeq (true, $(shell [[ "$(VERBOSE)" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$$ ]] && echo true))
 	.SHELLFLAGS := -cex
 else
 	.SHELLFLAGS := -ce
