@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Pre-commit git hook to check the EditorConfig rules complience over changed files
+# Pre-commit git hook to check the EditorConfig rules complience over changed
+# files.
 #
 # Usage:
 #   $ ./editorconfig-pre-commit.sh
@@ -10,7 +11,10 @@
 #   1 - files are not formatted correctly
 #
 # Notes:
-#   Due to the file name escaping issue files are checked one by one.
+#   1) Please, make sure to enable Markdown linting in your IDE. For the Visual
+#   Studio Code editor it is `editorconfig.editorconfig` that is already
+#   specified in the `./.vscode/extensions.json` file.
+#   2) Due to the file name escaping issue files are checked one by one.
 
 # ==============================================================================
 
