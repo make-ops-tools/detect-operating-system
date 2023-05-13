@@ -10,8 +10,8 @@
 #   BRANCH_NAME=other-branch-than-main  # Branch to compare with
 #
 # Exit codes:
-#   0 - all files are formatted correctly
-#   1 - files are not formatted correctly
+#   0 - All files are formatted correctly
+#   1 - Files are not formatted correctly
 #
 # Notes:
 #   1) Please, make sure to enable Markdown linting in your IDE. For the Visual
