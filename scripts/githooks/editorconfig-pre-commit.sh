@@ -24,7 +24,10 @@
 
 exit_code=0
 image_digest=0f8f8dd4f393d29755bef2aef4391d37c34e358d676e9d66ce195359a9c72ef3 # 2.7.0
-changed_files=$([ "$ALL_FILES" != true ] && git diff --diff-filter=ACMRT --name-only ${BRANCH_NAME:-origin/main} || git grep --cached -Il '')
+changed_files=$([[ "$ALL_FILES" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]] && \
+  git grep --cached -Il '' || \
+  git diff --diff-filter=ACMRT --name-only ${BRANCH_NAME:-origin/main} \
+)
 
 while read file; do
     docker run --rm --platform linux/amd64 \

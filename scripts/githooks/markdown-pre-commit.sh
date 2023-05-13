@@ -22,7 +22,10 @@
 # ==============================================================================
 
 image_digest=3e42db866de0fc813f74450f1065eab9066607fed34eb119d0db6f4e640e6b8d # v0.34.0
-changed_files=$([ "$ALL_FILES" != true ] && git diff --diff-filter=ACMRT --name-only ${BRANCH_NAME:-origin/main} *.md || git grep --cached -Il '' | grep '.md$')
+changed_files=$([[ "$ALL_FILES" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]] && \
+  git grep --cached -Il '' | grep '.md$' || \
+  git diff --diff-filter=ACMRT --name-only ${BRANCH_NAME:-origin/main} *.md \
+)
 
 if [ -n "$changed_files" ]; then
   image=ghcr.io/igorshubovych/markdownlint-cli@sha256:$image_digest

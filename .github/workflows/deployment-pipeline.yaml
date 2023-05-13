@@ -32,9 +32,9 @@ jobs:
           export BUILD_TIMESTAMP="${{ steps.datetime.outputs.timestamp }}"
           export BUILD_EPOCH="${{ steps.datetime.outputs.epoch }}"
           make list-variables
-      # - name: Run Functional Test Suite
-      #   run: |
-      #     make test
+      - name: Run Functional Test Suite
+        run: |
+          make test
       - name: Run Installation Test
         run: |
           curl -L https://raw.githubusercontent.com/makeops-tools/detect-operating-system/main/install.sh | bash
