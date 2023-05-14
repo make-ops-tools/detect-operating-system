@@ -1,5 +1,7 @@
 # Make Ops Tools - Detect Operating System
 
+[![CI/CD Pipeline](https://github.com/make-ops-tools/detect-operating-system/actions/workflows/cicd-pipeline.yaml/badge.svg?branch=main)](https://github.com/make-ops-tools/detect-operating-system/actions/workflows/cicd-pipeline.yaml)
+
 ## Table of Contents
 
 - [Make Ops Tools - Detect Operating System](#make-ops-tools---detect-operating-system)
