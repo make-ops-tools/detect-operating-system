@@ -7,7 +7,7 @@
 #
 # Options:
 #   BRANCH_NAME=other-branch-than-main      # Default is `main`
-#   INSTALL_DIR=other-dir-than-install-dir  # Default is `~/.make-ops-tools/detect-operating-system`
+#   INSTALL_DIR=other-dir-than-install-dir  # Default is `~/.local/share/$ORG_NAME/$REPO_NAME`
 #   CLONE_REPO=true                         # Default is `false`
 #   VERBOSE=true                            # Default is `false`
 
@@ -22,10 +22,11 @@ REPO_NAME=detect-operating-system
 PROJECT_NAME=$ORG_NAME-$REPO_NAME
 
 BRANCH_NAME=${BRANCH_NAME:-main}
-INSTALL_DIR=${INSTALL_DIR:-~/.$ORG_NAME/$REPO_NAME}
+INSTALL_DIR=${INSTALL_DIR:-$HOME/.local/share/$ORG_NAME/$REPO_NAME}
 CLONE_REPO=${CLONE_REPO:-false}
 
-CMD_NAME=$REPO_NAME
+CMD_PATH=$HOME/.local/bin
+CMD_NAME=$REPO_NAME.sh
 
 # ==============================================================================
 
@@ -89,17 +90,18 @@ function check() {
 
 function install() {
 
-  mkdir -pv ~/bin
+  mkdir -pv $CMD_PATH
   ln -sfv \
-    $INSTALL_DIR/scripts/$CMD_NAME.sh \
-    ~/bin/$CMD_NAME
+    $INSTALL_DIR/scripts/$CMD_NAME \
+    $CMD_PATH/$CMD_NAME
 }
 
 function finish() {
 
   printf "Project directory %s\n" "$INSTALL_DIR"
-  printf "Executable %s\n" "~/bin/$CMD_NAME"
-  printf "Add to your PATH the ~/bin directory, i.e. PATH=\"~/bin:\$PATH\"\n"
+  printf "Executable %s\n" "$CMD_PATH/$CMD_NAME"
+  printf "Add to your PATH the $CMD_PATH directory, i.e. 'PATH=\"$CMD_PATH:\$PATH\"' or\n"
+  printf "create an alias i.e. 'alias detect-os=\"source $CMD_PATH/$CMD_NAME | sed 's/export //'\"'\n"
 }
 
 # ==============================================================================
