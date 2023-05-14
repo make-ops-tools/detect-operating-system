@@ -101,7 +101,7 @@ function finish() {
   printf "Project directory %s\n" "$INSTALL_DIR"
   printf "Executable %s\n" "$CMD_PATH/$CMD_NAME"
   printf "Add to your PATH the $CMD_PATH directory, i.e. 'PATH=\"$CMD_PATH:\$PATH\"' or\n"
-  printf "create an alias i.e. 'alias detect-os=\"source $CMD_PATH/$CMD_NAME | sed 's/export //'\"'\n"
+  printf "create an alias i.e. 'alias detect-os=\"$CMD_PATH/$CMD_NAME | sed 's/export //'\"'\n"
 }
 
 # ==============================================================================

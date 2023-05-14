@@ -44,4 +44,4 @@ jobs:
       - name: Run Installation Test
         run: |
           curl -L https://raw.githubusercontent.com/makeops-tools/detect-operating-system/main/install.sh | bash
-          test -x ~/bin/detect-operating-system
+          test -x ~/.local/bin/detect-operating-system.sh
