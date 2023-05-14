@@ -1,4 +1,6 @@
-#!/bin/sh -e
+#!/bin/sh
+
+set -e
 
 # Project installation script
 #
@@ -9,7 +11,7 @@
 #   BRANCH_NAME=other-branch-than-main      # Default is `main`
 #   INSTALL_DIR=other-dir-than-install-dir  # Default is `~/.local/share/$ORG_NAME/$REPO_NAME`
 #   CLONE_REPO=true                         # Default is `false`
-#   VERBOSE=true                            # Default is `false`
+#   VERBOSE=true                            # Show all the executed commands, default is `false`
 
 # ==============================================================================
 
@@ -127,4 +129,6 @@ function is_arg_false() {
 # ==============================================================================
 
 is_arg_true "$VERBOSE" && set -x
-main
+main $*
+
+exit 0
