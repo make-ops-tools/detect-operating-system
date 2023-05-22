@@ -32,7 +32,7 @@ image_digest=3e42db866de0fc813f74450f1065eab9066607fed34eb119d0db6f4e640e6b8d # 
 
 function main() {
 
-  if is_arg_true "$ALL_FILES"; then
+  if is-arg-true "$ALL_FILES"; then
     # Check all files
     files="*.md"
   else
@@ -49,7 +49,7 @@ function main() {
   fi
 }
 
-function is_arg_true() {
+function is-arg-true() {
 
   if [[ "$1" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]]; then
     return 0
@@ -60,7 +60,7 @@ function is_arg_true() {
 
 # ==============================================================================
 
-is_arg_true "$VERBOSE" && set -x
+is-arg-true "$VERBOSE" && set -x
 
 main $*
 

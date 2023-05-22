@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
@@ -43,7 +43,7 @@ function main() {
 
 function clone() {
 
-  if (is_arg_false "$CLONE_REPO" || ! is_arg_true "$CLONE_REPO") then
+  if (is-arg-false "$CLONE_REPO" || ! is-arg-true "$CLONE_REPO") then
     return 1
   fi
 
@@ -108,7 +108,7 @@ function finish() {
 
 # ==============================================================================
 
-function is_arg_true() {
+function is-arg-true() {
 
   if [[ "$1" =~ ^(true|yes|y|on|1|TRUE|YES|Y|ON)$ ]]; then
     return 0
@@ -117,7 +117,7 @@ function is_arg_true() {
   fi
 }
 
-function is_arg_false() {
+function is-arg-false() {
 
   if [[ "$1" =~ ^(false|no|n|off|0|FALSE|NO|N|OFF)$ ]]; then
     return 0
@@ -128,7 +128,7 @@ function is_arg_false() {
 
 # ==============================================================================
 
-is_arg_true "$VERBOSE" && set -x
+is-arg-true "$VERBOSE" && set -x
 main $*
 
 exit 0
