@@ -1,7 +1,6 @@
 {
   "recommendations": [
     "alefragnani.bookmarks",
-    "amazonwebservices.aws-toolkit-vscode",
     "davidanson.vscode-markdownlint",
     "dbaeumer.vscode-eslint",
     "donjayamanne.githistory",
@@ -9,22 +8,18 @@
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
     "github.codespaces",
-    "github.copilot",
     "github.github-vscode-theme",
     "github.remotehub",
     "github.vscode-github-actions",
     "github.vscode-pull-request-github",
-    "golang.go",
-    "hashicorp.terraform",
     "hediet.vscode-drawio",
     "johnpapa.vscode-peacock",
     "mhutchie.git-graph",
     "ms-azuretools.vscode-docker",
-    "ms-kubernetes-tools.vscode-kubernetes-tools",
-    "ms-python.python",
     "ms-vscode-remote.remote-containers",
     "ms-vscode-remote.remote-wsl",
     "ms-vscode.hexeditor",
+    "ms-vscode.live-server",
     "ms-vsliveshare.vsliveshare",
     "redhat.vscode-xml",
     "streetsidesoftware.code-spell-checker-british-english",
@@ -37,5 +32,5 @@
     "yzhang.dictionary-completion",
     "yzhang.markdown-all-in-one"
   ],
-  "unwantedRecommendations": ["ms-vscode.makefile-tools"]
+  "unwantedRecommendations": []
 }
